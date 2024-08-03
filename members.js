@@ -1,5 +1,5 @@
 // Sample member data
-const members = [
+let members = [
     {
       name: "John Doe",
       photo: "https://via.placeholder.com/150",
