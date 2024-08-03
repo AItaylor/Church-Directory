@@ -1,49 +1,41 @@
-document.addEventListener('DOMContentLoaded', () => {
+
+ // Function to display members
+function displayMembers(membersToShow) {
     const memberList = document.getElementById('memberList');
-    const memberDetails = document.getElementById('memberDetails');
-    const searchInput = document.getElementById('searchInput');
-
-    function displayMembers(membersToDisplay) {
-        memberList.innerHTML = membersToDisplay.map(member => `
-            <div class="member-card" onclick="showMemberDetails(${member.id})">
-                <img src="${member.photo}" alt="${member.name}">
-                <h3>${member.name}</h3>
-            </div>
-        `).join('');
-    }
-
-    function showMemberDetails(id) {
-        const member = members.find(m => m.id === id);
-        memberDetails.innerHTML = `
-            <h2>${member.name}</h2>
+    memberList.innerHTML = ''; // Clear existing members
+    
+    membersToShow.forEach(member => {
+        const memberCard = document.createElement('div');
+        memberCard.className = 'member-card';
+        memberCard.innerHTML = `
             <img src="${member.photo}" alt="${member.name}">
-            <p>Contact: ${member.contact}</p>
-            <p>Role: ${member.role}</p>
-            <p>Family: ${member.family}</p>
+            <h3>${member.name}</h3>
+            <p>${member.role}</p>
         `;
-    }
-
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const filteredMembers = members.filter(member => 
-            member.name.toLowerCase().includes(searchTerm) ||
-            member.role.toLowerCase().includes(searchTerm) ||
-            member.family.toLowerCase().includes(searchTerm)
-        );
-        displayMembers(filteredMembers);
+        memberList.appendChild(memberCard);
     });
-
-    displayMembers(members);
-});
-
-function showMemberDetails(id) {
-    const member = members.find(m => m.id === id);
-    const memberDetails = document.getElementById('memberDetails');
-    memberDetails.innerHTML = `
-        <h2>${member.name}</h2>
-        <img src="${member.photo}" alt="${member.name}">
-        <p>Contact: ${member.contact}</p>
-        <p>Role: ${member.role}</p>
-        <p>Family: ${member.family}</p>
-    `;
 }
+
+// Function to filter members based on search
+function searchMembers() {
+    const searchInput = document.getElementById('searchInput');
+    const searchTerm = searchInput.value.toLowerCase();
+    
+    const filteredMembers = members.filter(member => 
+        member.name.toLowerCase().includes(searchTerm) ||
+        member.role.toLowerCase().includes(searchTerm)
+    );
+    
+    displayMembers(filteredMembers);
+}
+
+// Set up event listeners
+function initialize() {
+    displayMembers(members); // Display all members initially
+    
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', searchMembers);
+}
+
+// Call initialize when the page loads
+window.onload = initialize;
