@@ -112,6 +112,34 @@ nav ul li a:hover {
     font-size: 1.2em;
 }
 
+/* Notice Styles */
+.notice {
+    background: #FFF;
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.notice p {
+    margin: 0;
+    font-size: 1.1em;
+    color: var(--primary-color);
+}
+
+/* Email List Styles */
+.email-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.email-list li {
+    margin: 5px 0;
+}
+
 /* Member List Styles */
 #memberList {
     display: flex;
