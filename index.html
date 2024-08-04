@@ -27,8 +27,11 @@
         </div>
     </main>
     <footer>
-        <p>&copy; 2024 St. Ann Parish Church. All rights reserved.</p>
+        <p>&copy; <span id="currentYear"></span> St. Ann Parish Church. All rights reserved.</p>
     </footer>
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
     <script src="members.js"></script>
     <script src="script.js"></script>
 </body>
