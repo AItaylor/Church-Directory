@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Include all your HTML files
     Promise.all([
-        // includeHTML('header', 'header.html'),
+        includeHTML('header', 'header.html'),
         includeHTML('nav', 'nav.html'),
         // includeHTML('order-of-service', 'order-of-service.html'),
         // includeHTML('hymns', 'hymns.html'),
